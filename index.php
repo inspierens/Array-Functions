@@ -235,7 +235,7 @@ echo $userData[5] . PHP_EOL;
 //implode
 
 $commaSeparated = implode(",", $keyData);
-echo $commaSeparated .PHP_EOL;
+echo $commaSeparated . PHP_EOL;
 
 //preg_split str_split
 
