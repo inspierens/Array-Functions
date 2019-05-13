@@ -1,6 +1,7 @@
 <?php
 
 $mainData = [1, 7, 4, 3];
+$keyData = ['jet' => 3, 'mot' => 'fre', 'ret' => 32];
 $someData = [
     ['x' => 1, 'y' => 2],
     ['x' => 5, 'y' => 7],
@@ -59,8 +60,8 @@ print_r($result);
 
 //array_product
 
-$result = array_product($mainData) . PHP_EOL;
-echo $result;
+$result = array_product($mainData);
+echo $result . PHP_EOL;
 
 //array_replace
 
@@ -73,3 +74,118 @@ $result = array_reverse($mainData); //not work
 print_r($mainData);
 $result = array_reverse($mainData, true);
 print_r($result);
+
+//array_search
+
+$key = array_search(3, $mainData);
+echo $key . PHP_EOL;
+
+//array_slice
+
+$result = array_slice($mainData, 2, -1);
+print_r($result);
+$result = array_slice($mainData, 2, -1, true);
+print_r($result);
+
+//array_splice
+
+array_splice($mainData, 2, 0, 100);
+var_dump($mainData);
+array_splice($mainData, count($mainData), 0, [10, 100]); //array_push($mainData, 10, 20);
+print_r($mainData);
+
+//array_sum
+
+echo array_sum($mainData) . PHP_EOL;
+
+//array_unique
+
+$result = array_unique($mainData);
+print_r($result);
+
+//array_unshift
+
+array_unshift($mainData, 2, 3);
+print_r($mainData);
+
+//array_walk
+
+function testAlter(&$item1, $key, $prefix)
+{
+    $item1 = "$prefix: $item1";
+}
+
+function testPrint($item2, $key)
+{
+    echo $key . '. ' . $item2 . PHP_EOL;
+}
+
+array_walk($keyData, 'testPrint');
+array_walk($keyData, 'testAlter', 'value');
+array_walk($keyData, 'testPrint');
+
+//arsort asort
+
+arsort($mainData);
+print_r($mainData);
+asort($mainData);
+print_r($mainData);
+
+//count
+
+echo count($someData, COUNT_RECURSIVE) . PHP_EOL;
+echo count($someData) . PHP_EOL;
+
+//current
+
+$result = current($mainData);
+echo $result . PHP_EOL;
+$result = next($mainData);
+$result = current($mainData);
+echo $result . PHP_EOL;
+$result = end($mainData);
+$result = current($mainData);
+echo $result . PHP_EOL;
+
+//each
+
+print_r($keyData);
+$result = each($keyData);
+print_r($result);
+
+//extract
+
+$mot = 5;
+extract($keyData, EXTR_PREFIX_SAME, 'wddx');
+
+echo "$jet, $mot, $ret \n";
+
+//
+
+if (array_key_exists('mot', $keyData)) {
+    echo 'array contains an element "mot"' . PHP_EOL;
+}
+
+//in_array
+
+if (in_array(100, $mainData)) {
+    echo 'find 100' . PHP_EOL;
+} else {
+    echo 'nothing' . PHP_EOL;
+}
+
+//key
+
+while ($nameArr = current($keyData)) {
+    if ($nameArr == 'value: 32') {
+        echo 'key = ' . key($keyData) . PHP_EOL;
+    }
+    next($keyData);
+}
+
+//krsort ksort
+
+krsort($mainData);
+print_r($mainData);
+ksort($mainData);
+print_r($mainData);
