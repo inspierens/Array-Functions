@@ -124,11 +124,15 @@ array_walk($keyData, 'testPrint');
 array_walk($keyData, 'testAlter', 'value');
 array_walk($keyData, 'testPrint');
 
-//arsort asort
+//arsort asort rsort sort
 
 arsort($mainData);
 print_r($mainData);
 asort($mainData);
+print_r($mainData);
+rsort($mainData);
+print_r($mainData);
+sort($mainData);
 print_r($mainData);
 
 //count
@@ -136,7 +140,7 @@ print_r($mainData);
 echo count($someData, COUNT_RECURSIVE) . PHP_EOL;
 echo count($someData) . PHP_EOL;
 
-//current
+//current pos
 
 $result = current($mainData);
 echo $result . PHP_EOL;
@@ -146,10 +150,12 @@ echo $result . PHP_EOL;
 $result = end($mainData);
 $result = current($mainData);
 echo $result . PHP_EOL;
+$result = prev($mainData);
+$result = pos($mainData);
+echo $result . PHP_EOL;
 
 //each
 
-print_r($keyData);
 $result = each($keyData);
 print_r($result);
 
@@ -188,4 +194,63 @@ while ($nameArr = current($keyData)) {
 krsort($mainData);
 print_r($mainData);
 ksort($mainData);
+print_r($mainData);
+
+//list
+
+list($assessment, , , , $year, $family) = $mainData;
+echo "my assessment is $assessment, " .
+    "my grandfather is $year years old, " .
+    "my family consists of $family people.\n";
+
+//natcasesort natsort
+
+$keyData['mot'] = 'Value: 5';
+natcasesort($keyData);
+print_r($keyData);
+natsort($keyData);
+print_r($keyData);
+
+//range
+
+foreach (range(0, 100, 10) as $number) {
+    echo $number . ' ';
+}
+echo "\n";
+
+//is_array
+
+$anyValue = 0;
+echo (is_array($mainData) ? 'array' : 'not array') . PHP_EOL;
+echo (is_array($anyValue) ? 'array' : 'not array') . PHP_EOL;
+
+//explode
+
+$data = "foo:*:1023:1000::/home/foo:/bin/sh";
+list($user, $pass, $uid, $gid, $gecos, $home, $shell) = explode(":", $data);
+echo $user . PHP_EOL;
+$userData = explode(":", $data);
+echo $userData[5] . PHP_EOL;
+
+//implode
+
+$commaSeparated = implode(",", $keyData);
+echo $commaSeparated .PHP_EOL;
+
+//preg_split str_split
+
+$keywords = preg_split("/[\s,]+/", "hypertext language, programming");
+print_r($keywords);
+
+$str = "Hello Friend";
+
+$arr1 = str_split($str);
+$arr2 = str_split($str, 3);
+
+print_r($arr1);
+print_r($arr2);
+
+//unset
+
+unset($mainData[7]);
 print_r($mainData);
