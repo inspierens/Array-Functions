@@ -229,7 +229,7 @@ foreach (range(200,250) as $val) {
 numbTask(14);
 
 $arr = ["abcd","abc","de","hjjj","g","wer"];
-$lenMax = 0;
+$lenMax = strlen($arr[0]);
 $lenMin = strlen($arr[0]);
 
 foreach ($arr as $val) {
@@ -253,3 +253,14 @@ echo $sep;
 //Task 16
 numbTask(16);
 
+$lenMax = strlen(key($ceu));
+
+foreach ($ceu as $key => $val) {
+    if ($lenMax<=strlen($key)) {
+        $lenMax = strlen($key);
+    }
+}
+echo 'The biggest key in the array is ' . $lenMax . '.' . $sep;
+
+//Task 17
+numbTask(17);
