@@ -40,7 +40,7 @@ $val = (string)$val9; // string null - выводит ""
 var_dump($val);
 $val = (string)$val6; // string NAN - выводит "NAN"
 var_dump($val);
-$val = (string)$val7; // string [3, 2] - выводит "Array"
+$val = @(string)$val7; // string [3, 2] - выводит "Array"
 var_dump($val);
 
 $val = (boolean)$val1; // boolean 5 - выводит true
@@ -95,13 +95,13 @@ $val = (unset)$val8; // unset false - выводит NULL
 var_dump($val);      //(unset) - приведение к NULL
 //устарело, не используется
 
-$val = $val1 + $val2; // 5 + '3fd' = int (8)
+@$val = $val1 + $val2; // 5 + '3fd' = int (8)
 var_dump($val);
-$val = $val1 + $val3; // 5 + 'fd3' = int (5)
+@$val = $val1 + $val3; // 5 + 'fd3' = int (5)
 var_dump($val);
-$val = $val2 + $val1; // '3fd' + 5 = int (8)
+@$val = $val2 + $val1; // '3fd' + 5 = int (8)
 var_dump($val);
-$val = $val3 + $val1; // 'fd3' + 5 = int (5)
+@$val = $val3 + $val1; // 'fd3' + 5 = int (5)
 var_dump($val);
 
 $val = $val1 + $val4; // 5 + true = int (6)
@@ -127,29 +127,29 @@ var_dump($val);
 
 $val = $val5 + $val1; // 4.3 + 5 = double (9.3)
 var_dump($val);
-$val = $val5 + $val2; // 4.3 + '3fd' = double (7.3)
+@$val = $val5 + $val2; // 4.3 + '3fd' = double (7.3)
 var_dump($val);
-$val = $val2 + $val5; // '3fd' + 4.3 = double (7.3)
+@$val = $val2 + $val5; // '3fd' + 4.3 = double (7.3)
 var_dump($val);
-$val = $val3 + $val5; // 'fd3' + 4.3 = double (4.3)
+@$val = $val3 + $val5; // 'fd3' + 4.3 = double (4.3)
 var_dump($val);
-$val = $val3 + $val2; // 'fd3' + '3fd' = int (3)
+@$val = $val3 + $val2; // 'fd3' + '3fd' = int (3)
 var_dump($val);
 
 $val = 1 + "10.5";                // double (11.5)
 var_dump($val);
 $val = 1 + "-1.3e3";              // double (-1299)
 var_dump($val);
-$val = 1 + "bob-1.3e3";           // integer (1)
+@$val = 1 + "bob-1.3e3";           // integer (1)
 var_dump($val);
-$val = 1 + "bob3";                // integer (1)
+@$val = 1 + "bob3";                // integer (1)
 var_dump($val);
-$val = 1 + "10 Small Pigs";       // integer (11)
+@$val = 1 + "10 Small Pigs";       // integer (11)
 var_dump($val);
-$val = 4 + "10.2 Little Piggies"; // double (14.2)
+@$val = 4 + "10.2 Little Piggies"; // double (14.2)
 var_dump($val);
-$val = "10.0 pigs " + 1;          // double (11)
+@$val = "10.0 pigs " + 1;          // double (11)
 var_dump($val);
-$val = "10.0 pigs " + 1.0;        // double (11)
+@$val = "10.0 pigs " + 1.0;        // double (11)
 var_dump($val);
 
