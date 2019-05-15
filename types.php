@@ -6,7 +6,7 @@ $val3 = 'fd3';
 $val4 = true;
 $val5 = 4.3;
 $val6 = NAN;
-$val7 = [3];
+$val7 = [3, 2];
 $val8 = false;
 $val9 = null;
 $val0 = '';
@@ -27,6 +27,8 @@ $val = (int)$val2; // int '3fd' - выводит int 3
 var_dump($val);
 $val = (int)$val3; // int 'fd3' - выводит int 0
 var_dump($val);
+$val = (int)$val7; // int [3, 2] - выводит int 1
+var_dump($val);
 
 $val = (string)$val1; // string 5 - выводит "5"
 var_dump($val);
@@ -38,7 +40,7 @@ $val = (string)$val9; // string null - выводит ""
 var_dump($val);
 $val = (string)$val6; // string NAN - выводит "NAN"
 var_dump($val);
-$val = (string)$val7; // string [3] - выводит "Array"
+$val = (string)$val7; // string [3, 2] - выводит "Array"
 var_dump($val);
 
 $val = (boolean)$val1; // boolean 5 - выводит true
@@ -49,7 +51,7 @@ $val = (boolean)$val5; // boolean 4.3 - выводит true
 var_dump($val);
 $val = (boolean)$val6; // boolean NAN - выводит true
 var_dump($val);
-$val = (boolean)$val7; // boolean [3] - выводит true
+$val = (boolean)$val7; // boolean [3, 2] - выводит true
 var_dump($val);
 $val = (boolean)$val9; // boolean null - выводит false
 var_dump($val);
@@ -85,12 +87,13 @@ $val = (object)$val9; // object null - выводит class stdClass#2 { }
 var_dump($val);
 $val = (object)$val8; // object false - выводит class stdClass#1 {public $scalar => bool(false)}
 var_dump($val);
-$val = (object)$val7; // object [3] - выводит class stdClass#2 {public $0 => int(3)}
+$val = (object)$val7; // object [3] - выводит class stdClass#2 {public $0 => int(3) public $1 => int(2)}
 var_dump($val);
 
 
 $val = (unset)$val8; // unset false - выводит NULL
 var_dump($val);      //(unset) - приведение к NULL
+//устарело, не используется
 
 $val = $val1 + $val2; // 5 + '3fd' = int (8)
 var_dump($val);
