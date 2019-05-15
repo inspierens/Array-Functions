@@ -71,6 +71,24 @@ var_dump($val);
 $val = (array)$val8; // array false - выводит arr[bool false]
 var_dump($val);
 
+$val = (object)$val1; // object 5 - выводит class stdClass#1 {public $scalar => int 5}
+var_dump($val);
+$val = (object)$val2; // object '3fd' - выводит class stdClass#2 {public $scalar => string '3fd'}
+var_dump($val);
+$val = (object)$val5; // object 4.3 - выводит class stdClass#1 {public $scalar => double(4.3)}
+var_dump($val);
+$val = (object)$val6; // object NAN - выводит class stdClass#2 (1) {public $scalar => double(NAN)}
+var_dump($val);
+$val = (object)$val4; // object true - выводит class stdClass#1 {public $scalar => bool(true)}
+var_dump($val);
+$val = (object)$val9; // object null - выводит class stdClass#2 { }
+var_dump($val);
+$val = (object)$val8; // object false - выводит class stdClass#1 {public $scalar => bool(false)}
+var_dump($val);
+$val = (object)$val7; // object [3] - выводит class stdClass#2 {public $0 => int(3)}
+var_dump($val);
+
+
 $val = (unset)$val8; // unset false - выводит NULL
 var_dump($val);      //(unset) - приведение к NULL
 
