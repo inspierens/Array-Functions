@@ -31,6 +31,11 @@ echo fuckTorial(5);
 //Task 2
 numbTask(2);
 
+/**
+ * @param int $numb
+ *
+ * @return string
+ */
 function isPrime(int $numb):string
 {
     if ($numb == 1) {
@@ -51,6 +56,11 @@ echo isPrime(11);
 //Task 3
 numbTask(3);
 
+/**
+ * @param string $str
+ *
+ * @return string
+ */
 function reverseStr(string $str):string
 {
     return strrev($str);
@@ -61,6 +71,9 @@ echo reverseStr('Hello');
 //Task 4
 numbTask(4);
 
+/**
+ * @param array $arr
+ */
 function sortArr(array &$arr)
 {
     sort($arr);
@@ -73,6 +86,11 @@ print_r($arr);
 //Task 5
 numbTask(5);
 
+/**
+ * @param string $str
+ *
+ * @return string
+ */
 function loveRcase(string $str):string
 {
     return strtolower($str);
@@ -84,6 +102,12 @@ echo loveRcase($str);
 //Task 6
 numbTask(6);
 
+
+/**
+ * @param string $str
+ *
+ * @return string
+ */
 function funckyWord(string $str = ''):string
 {
     $str = str_replace(' ', '', $str);
