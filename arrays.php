@@ -14,6 +14,11 @@ print_r($result);
 
 //array_map
 
+/**
+ * @param $val
+ *
+ * @return string
+ */
 function showMeArray($val)
 {
     return ("Элемент $val");
@@ -110,11 +115,20 @@ print_r($mainData);
 
 //array_walk
 
+/**
+ * @param $item1
+ * @param $key
+ * @param $prefix
+ */
 function testAlter(&$item1, $key, $prefix)
 {
     $item1 = "$prefix: $item1";
 }
 
+/**
+ * @param $item2
+ * @param $key
+ */
 function testPrint($item2, $key)
 {
     echo $key . '. ' . $item2 . PHP_EOL;

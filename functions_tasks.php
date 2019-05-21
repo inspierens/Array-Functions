@@ -76,9 +76,10 @@ numbTask(4);
  *
  * @return array
  */
-function sortArr(array $arr):array
+function sortArr(array $arr) : array
 {
     sort($arr);
+
     return $arr;
 }
 

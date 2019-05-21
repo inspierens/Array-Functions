@@ -238,7 +238,7 @@ numbTask(25);
 
 $date = new DateTime('06-10-2014', new DateTimeZone('Europe/Rome'));
 
-echo 'Today is '.$date->format('D').' on '.$date->format('M d, Y');
+echo 'Today is ' . $date->format('D') . ' on ' . $date->format('M d, Y');
 
 //Task 26
 numbTask(26);
@@ -248,8 +248,8 @@ $startdate = strtotime('01-01-2019');
 $enddate = strtotime('31-12-2019');
 
 while (($startdate) < ($enddate)) {
-    if (date('n', $startdate)==$numb) {
-        echo date('F',$startdate);
+    if (date('n', $startdate) == $numb) {
+        echo date('F', $startdate);
     }
 
     $startdate = strtotime('+1 month', $startdate);
