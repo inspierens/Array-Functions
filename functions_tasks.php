@@ -2,7 +2,7 @@
 /**
  * @param $num
  */
-function numbTask($num)
+function numbTask(int $num)
 {
     echo "<hr>" . $num . "</br>" . PHP_EOL;
 }
@@ -13,20 +13,20 @@ define('SEP', "<br>" . PHP_EOL);
 numbTask(1);
 
 /**
- * @param $arg
+ * @param int $arg
  *
- * @return float|int
+ * @return int
  */
-function fuckTorial(int $arg) : int
+function myFactorial(int $arg) : int
 {
     if ($arg > 0) {
-        return $arg * fuckTorial($arg - 1);
+        return $arg * myFactorial($arg - 1);
     } else {
         return 1;
     }
 }
 
-echo fuckTorial(5);
+echo myFactorial(5);
 
 //Task 2
 numbTask(2);
@@ -36,7 +36,7 @@ numbTask(2);
  *
  * @return string
  */
-function isPrime(int $numb):string
+function isPrime(int $numb) : string
 {
     if ($numb == 1) {
         return 'false';
@@ -61,7 +61,7 @@ numbTask(3);
  *
  * @return string
  */
-function reverseStr(string $str):string
+function reverseStr(string $str) : string
 {
     return strrev($str);
 }
@@ -73,15 +73,17 @@ numbTask(4);
 
 /**
  * @param array $arr
+ *
+ * @return array
  */
-function sortArr(array &$arr)
+function sortArr(array $arr):array
 {
     sort($arr);
+    return $arr;
 }
 
 $arr = [3, 6, 4, 2, 1, 5];
-sortArr($arr);
-print_r($arr);
+print_r(sortArr($arr));
 
 //Task 5
 numbTask(5);
@@ -91,13 +93,13 @@ numbTask(5);
  *
  * @return string
  */
-function loveRcase(string $str):string
+function myLoverCase(string $str) : string
 {
     return strtolower($str);
 }
 
 $str = 'FDg dfk ewfFD SFdgdsj fhas';
-echo loveRcase($str);
+echo myLoverCase($str);
 
 //Task 6
 numbTask(6);
@@ -108,13 +110,15 @@ numbTask(6);
  *
  * @return string
  */
-function funckyWord(string $str = ''):string
+function revWord(string $str = '') : string
 {
     $str = str_replace(' ', '', $str);
     $str2 = '';
+
     for ($i = strlen($str) - 1; $i >= 0; $i--) {
         $str2 .= $str[$i];
     }
+
     if ($str == $str2) {
         return 'true';
     } else {
@@ -122,4 +126,4 @@ function funckyWord(string $str = ''):string
     }
 }
 
-echo funckyWord('madam');
+echo revWord('madam');
