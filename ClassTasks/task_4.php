@@ -5,31 +5,56 @@
 
 //Создайте объект этого класса 'Дима', возраст 25, зарплата 1000. Выведите на экран произведение его возраста и зарплаты.
 
+/**
+ * Class Worker
+ */
 class Worker
 {
+    /**
+     * @var
+     */
     private $name;
+    /**
+     * @var
+     */
     private $age;
+    /**
+     * @var
+     */
     private $salary;
 
-
-    function __construct($name, $age, $salary)
+    /**
+     * @param string $name
+     * @param int    $age
+     * @param int    $salary
+     */
+    function __construct(string $name, int $age, int $salary)
     {
         $this->name = $name;
         $this->age = $age;
         $this->salary = $salary;
     }
 
-    public function getName()
+    /**
+     * @return string
+     */
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function getAge()
+    /**
+     * @return int
+     */
+    public function getAge() : int
     {
         return $this->age;
     }
 
-    public function getSalary()
+    /**
+     * @return int
+     */
+    public function getSalary() : int
     {
         return $this->salary;
     }

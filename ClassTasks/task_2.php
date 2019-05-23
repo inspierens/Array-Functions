@@ -6,38 +6,68 @@
 //
 //Выведите на экран сумму зарплат Ивана и Васи. Выведите на экран сумму возрастов Ивана и Васи.
 
+/**
+ * Class Worker
+ */
 class Worker
 {
+    /**
+     * @var
+     */
     private $name;
+    /**
+     * @var
+     */
     private $age;
+    /**
+     * @var
+     */
     private $salary;
 
-    public function setName($name)
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    /**
+     * @return string
+     */
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function setAge($age)
+    /**
+     * @param int $age
+     */
+    public function setAge(int $age)
     {
         $this->age = $age;
     }
 
-    public function getAge()
+    /**
+     * @return int
+     */
+    public function getAge() : int
     {
         return $this->age;
     }
 
-    public function setSalary($salary)
+    /**
+     * @param int $salary
+     */
+    public function setSalary(int $salary)
     {
         $this->salary = $salary;
     }
 
-    public function getSalary()
+    /**
+     * @return int
+     */
+    public function getSalary() : int
     {
         return $this->salary;
     }

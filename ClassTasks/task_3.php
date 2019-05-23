@@ -3,45 +3,80 @@
 // (от 1 до 100 лет). Этот метод должен использовать метод setAge перед установкой нового возраста (если возраст не
 // корректный - он не должен меняться).
 
+/**
+ * Class Worker
+ */
 class Worker
 {
+    /**
+     * @var
+     */
     private $name;
+    /**
+     * @var
+     */
     private $age;
+    /**
+     * @var
+     */
     private $salary;
 
-    public function setName($name)
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    /**
+     * @return string
+     */
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function setAge($age)
+    /**
+     * @param int $age
+     */
+    public function setAge(int $age)
     {
         if ($this->checkAge($age)) {
             $this->age = $age;
         }
     }
 
-    public function getAge()
+    /**
+     * @return int
+     */
+    public function getAge() : int
     {
         return $this->age;
     }
 
-    public function setSalary($salary)
+    /**
+     * @param int $salary
+     */
+    public function setSalary(int $salary)
     {
         $this->salary = $salary;
     }
 
-    public function getSalary()
+    /**
+     * @return int
+     */
+    public function getSalary() : int
     {
         return $this->salary;
     }
 
-    private function checkAge($age)
+    /**
+     * @param int $age
+     *
+     * @return int
+     */
+    private function checkAge(int $age) : int
     {
         if (($age < 1) or ($age > 100)) {
             return 0;

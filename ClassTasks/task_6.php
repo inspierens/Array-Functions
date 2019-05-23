@@ -2,72 +2,129 @@
 // 6 Сделайте класс Driver (Водитель), который будет наследоваться от класса Worker из предыдущей задачи. Этот метод
 // должен вносить следующие private поля: водительский стаж, категория вождения (A, B, C).
 
+/**
+ * Class User
+ */
 class User
 {
+    /**
+     * @var
+     */
     protected $name;
+    /**
+     * @var
+     */
     protected $age;
 
-    public function setName($name)
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    /**
+     * @return string
+     */
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function setAge($age)
+    /**
+     * @param int $age
+     */
+    public function setAge(int $age)
     {
         $this->age = $age;
     }
 
-    public function getAge()
+    /**
+     * @return int
+     */
+    public function getAge() : int
     {
         return $this->age;
     }
 }
 
+/**
+ * Class Worker
+ */
 class Worker extends User
 {
+    /**
+     * @var
+     */
     private $salary;
 
-    public function setSalary($salary)
+    /**
+     * @param int $salary
+     */
+    public function setSalary(int $salary)
     {
         $this->salary = $salary;
     }
 
-    public function getSalary()
+    /**
+     * @return int
+     */
+    public function getSalary() : int
     {
         return $this->salary;
     }
 }
 
+/**
+ * Class Driver
+ */
 class Driver extends Worker
 {
+    /**
+     * @var
+     */
     private $experience;
+    /**
+     * @var
+     */
     private $category;
 
-    public function setExperience($experience)
+    /**
+     * @param int $experience
+     */
+    public function setExperience(int $experience)
     {
         $this->experience = $experience;
     }
 
-    public function getExperience()
+    /**
+     * @return int
+     */
+    public function getExperience() : int
     {
         return $this->experience;
     }
 
-    public function setCategory($category)
+    /**
+     * @param string $category
+     */
+    public function setCategory(string $category)
     {
         $this->category = $category;
     }
 
-    public function getCategory()
+    /**
+     * @return string
+     */
+    public function getCategory() : string
     {
         return $this->category;
     }
 
+    /**
+     *
+     */
     public function showAll()
     {
         echo parent::getName() . PHP_EOL;

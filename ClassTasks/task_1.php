@@ -7,10 +7,22 @@
 //
 //Выведите на экран сумму зарплат Ивана и Васи. Выведите на экран сумму возрастов Ивана и Васи.
 
+/**
+ * Class Worker
+ */
 class Worker
 {
+    /**
+     * @var
+     */
     public $name;
+    /**
+     * @var
+     */
     public $age;
+    /**
+     * @var
+     */
     public $salary;
 }
 

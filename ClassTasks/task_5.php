@@ -11,42 +11,75 @@
 //Сделайте класс Student, который наследует от класса User и вносит дополнительные private поля стипендия, курс, а
 // также геттеры и сеттеры для них.
 
+/**
+ * Class User
+ */
 class User
 {
+    /**
+     * @var
+     */
     protected $name;
+    /**
+     * @var
+     */
     protected $age;
 
-    public function setName($name)
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    /**
+     * @return string
+     */
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function setAge($age)
+    /**
+     * @param int $age
+     */
+    public function setAge(int $age)
     {
         $this->age = $age;
     }
 
-    public function getAge()
+    /**
+     * @return int
+     */
+    public function getAge() : int
     {
         return $this->age;
     }
 }
 
+/**
+ * Class Worker
+ */
 class Worker extends User
 {
+    /**
+     * @var
+     */
     private $salary;
 
-    public function setSalary($salary)
+    /**
+     * @param int $salary
+     */
+    public function setSalary(int $salary)
     {
         $this->salary = $salary;
     }
 
-    public function getSalary()
+    /**
+     * @return int
+     */
+    public function getSalary() : int
     {
         return $this->salary;
     }
@@ -63,27 +96,48 @@ $obj2->setSalary(2000);
 
 echo $obj1->getSalary() + $obj2->getSalary();
 
+/**
+ * Class Student
+ */
 class Student extends User
 {
+    /**
+     * @var
+     */
     private $scholarship;
+    /**
+     * @var
+     */
     private $course;
 
-    public function setScholarship($scholarship)
+    /**
+     * @param int $scholarship
+     */
+    public function setScholarship(int $scholarship)
     {
         $this->scholarship = $scholarship;
     }
 
-    public function getScholarship()
+    /**
+     * @return int
+     */
+    public function getScholarship() : int
     {
         return $this->scholarship;
     }
 
-    public function setCourse($course)
+    /**
+     * @param int $course
+     */
+    public function setCourse(int $course)
     {
         $this->course = $course;
     }
 
-    public function getCourse()
+    /**
+     * @return int
+     */
+    public function getCourse() : int
     {
         return $this->course;
     }

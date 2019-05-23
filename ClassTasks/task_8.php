@@ -1,7 +1,10 @@
 <?php
-//Создайте класс Form - оболочку для создания форм. Он должен иметь методы input, submit, password, textarea, open,
-// close. Каждый метод принимает массив атрибутов.
-//Передаваемые атрибуты могут быть любыми:
+//Создайте класс SmartForm, который будет наследовать от Form из предыдущей задачи и сохранять значения инпутов
+// после отправки.
+//
+//То есть если мы сделали форму, нажали на кнопку отправки - то значения из инпутов не должны пропасть. Мало ли что-то
+// пойдет не так, например, форма некорректно заполнена, а введенные данные из нее пропали и их следует вводить заново.
+// Этого следует избегать.
 
 /**
  * Class Form
@@ -50,7 +53,7 @@ class Form
     public function input(array $arr)
     {
         $str = $this->setValue($arr);
-        echo '<input' . $str . '><br>';
+        echo '<input' . $str . '><br>' . PHP_EOL;
     }
 
     /**
@@ -59,7 +62,7 @@ class Form
     public function submit(array $arr)
     {
         $str = $this->setValue($arr);
-        echo '<input type="submit"' . $str . '><br>';
+        echo '<input type="submit"' . $str . '><br>' . PHP_EOL;
     }
 
     /**
@@ -68,7 +71,7 @@ class Form
     public function password(array $arr)
     {
         $str = $this->setValue($arr);
-        echo '<input type="password"' . $str . '><br>';
+        echo '<input type="password"' . $str . '><br>' . PHP_EOL;
     }
 
     /**
@@ -77,7 +80,7 @@ class Form
     public function textarea(array $arr)
     {
         $str = $this->setOtherValue($arr);
-        echo '<textarea' . $str . '</textarea><br>';
+        echo '<textarea' . $str . '</textarea><br>' . PHP_EOL;
     }
 
     /**
@@ -86,7 +89,7 @@ class Form
     public function open(array $arr)
     {
         $str = $this->setValue($arr);
-        echo '<form' . $str . '><br>';
+        echo '<form' . $str . '><br>' . PHP_EOL;
 
     }
 
@@ -95,21 +98,39 @@ class Form
      */
     public function close()
     {
-        echo '</form><br>';
+        echo '</form><br>' . PHP_EOL;
     }
 }
 
-$form = new Form();
-$form->open(['action' => 'index.php', 'method' => 'POST']);
-$form->input(['type' => 'text', 'value' => '!!!', 'class' => 'hi']);
-$form->password(['value' => '!!!']);
-$form->submit(['value' => 'go']);
-$form->textarea(['placeholder' => '123', 'value' => '!!!']);
-$form->close();
+/**
+ * Class SmartForm
+ */
+class SmartForm extends Form
+{
+    /**
+     * @var
+     */
+    private $name;
+    /**
+     * @var
+     */
+    private $pass;
 
-$form2 = new Form();
-$form2->open(['action' => 'index.php', 'method' => 'POST']);
+    /**
+     *
+     */
+    public function saveAll()
+    {
+        $this->name = $_POST['name'];
+        $this->pass = $_POST['pass'];
+    }
+}
+
+$form2 = new SmartForm();
+$form2->open(['action' => 'task_8.php', 'method' => 'POST']);
 $form2->input(['type' => 'text', 'placeholder' => 'Ваше имя', 'name' => 'name']);
 $form2->password(['placeholder' => 'Ваш пароль', 'name' => 'pass']);
 $form2->submit(['value' => 'Отправить']);
 $form2->close();
+
+$form2->saveAll();
