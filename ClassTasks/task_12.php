@@ -83,4 +83,4 @@ class Tag
 }
 
 $tag = new Tag('a');
-echo $tag->setText('ссылка')->setAttr('href', 'index.html')->show();
+echo $tag->setText('Главная')->setAttr('href', '../index.php')->show();
