@@ -84,11 +84,7 @@ class Worker
      */
     private function checkAge(int $age) : int
     {
-        if (($age < 1) or ($age > 100)) {
-            return 0;
-        } else {
-            return $age;
-        }
+        return ((($age < 1) or ($age > 100)) ? 0 : $age);
     }
 }
 
