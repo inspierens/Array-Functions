@@ -22,23 +22,27 @@ class Flash
 
     /**
      */
-    function __construct()
+    public function __construct()
     {
         $this->message = new Session();
     }
 
     /**
      * @param string $val
+     *
+     * @return Flash
      */
-    public function setMessage(string $val)
+    public function setMessage(string $val) : self
     {
         $this->message->setSession('message', $val);
+
+        return $this;
     }
 
     /**
-     *
+     * @return string
      */
-    public function getMessage()
+    public function getMessage() : string
     {
         $this->message->getSession('message');
     }

@@ -11,32 +11,38 @@ class Session
 {
     /**
      */
-    function __construct()
+    public function __construct()
     {
         session_start();
     }
 
     /**
      * @param string $sessionName
-     * @param        $sessionValue
+     * @param string $sessionValue
+     *
+     * @return Session
      */
-    public function setSession(string $sessionName, $sessionValue)
+    public function setSession(string $sessionName, string $sessionValue) : self
     {
         $_SESSION[$sessionName] = $sessionValue;
+
+        return $this;
     }
 
     /**
      * @param string $sessionName
+     *
+     * @return string
      */
-    public function getSession(string $sessionName)
+    public function getSession(string $sessionName) : string
     {
-        echo $_SESSION[$sessionName];
+        return $_SESSION[$sessionName];
     }
 
     /**
      * @param string $sessionName
      */
-    public function delSession(string $sessionName)
+    public function delSession(string $sessionName) : void
     {
         unset($_SESSION[$sessionName]);
     }
@@ -44,14 +50,11 @@ class Session
     /**
      * @param string $sessionName
      *
+     * @return bool
      */
-    public function checkSession(string $sessionName)
+    public function checkSession(string $sessionName) : bool
     {
-        if (!isset($_SESSION[$sessionName])) {
-            echo 'false'; //return 0
-        } else {
-            echo 'true'; //return 1
-        }
+        return ((!isset($_SESSION[$sessionName])) ? false : true);
     }
 }
 

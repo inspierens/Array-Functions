@@ -11,6 +11,9 @@
  */
 class Form
 {
+    /** @var */
+    private $htmlString = '';
+
     /**
      * @param array $arr
      *
@@ -49,56 +52,86 @@ class Form
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function input(array $arr)
+    public function input(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<input' . $str . '><br>' . PHP_EOL;
+        $this->htmlString .= '<input' . $str . '><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function submit(array $arr)
+    public function submit(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<input type="submit"' . $str . '><br>' . PHP_EOL;
+        $this->htmlString .= '<input type="submit"' . $str . '><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function password(array $arr)
+    public function password(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<input type="password"' . $str . '><br>' . PHP_EOL;
+        $this->htmlString .= '<input type="password"' . $str . '><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function textarea(array $arr)
+    public function textarea(array $arr) : self
     {
         $str = $this->setOtherValue($arr);
-        echo '<textarea' . $str . '</textarea><br>' . PHP_EOL;
+        $this->htmlString .= '<textarea' . $str . '</textarea><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function open(array $arr)
+    public function open(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<form' . $str . '><br>' . PHP_EOL;
+        $this->htmlString .= '<form' . $str . '><br>';
+
+        return $this;
 
     }
 
     /**
-     *
+     * @return Form
      */
-    public function close()
+    public function close() : self
     {
-        echo '</form><br>' . PHP_EOL;
+        $this->htmlString .= '</form><br>';
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHtmlCode() : string
+    {
+        return $this->htmlString;
     }
 }
 
@@ -107,19 +140,15 @@ class Form
  */
 class SmartForm extends Form
 {
-    /**
-     * @var
-     */
+    /** @var */
     private $name;
-    /**
-     * @var
-     */
+    /** @var */
     private $pass;
 
     /**
      *
      */
-    public function saveAll()
+    public function saveAll() : void
     {
         $this->name = $_POST['name'];
         $this->pass = $_POST['pass'];
@@ -132,5 +161,5 @@ $form2->input(['type' => 'text', 'placeholder' => 'Ваше имя', 'name' => '
 $form2->password(['placeholder' => 'Ваш пароль', 'name' => 'pass']);
 $form2->submit(['value' => 'Отправить']);
 $form2->close();
-
+echo $form2->getHtmlCode();
 $form2->saveAll();

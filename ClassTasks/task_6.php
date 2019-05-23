@@ -7,21 +7,21 @@
  */
 class User
 {
-    /**
-     * @var
-     */
+    /** @var */
     protected $name;
-    /**
-     * @var
-     */
+    /** @var */
     protected $age;
 
     /**
      * @param string $name
+     *
+     * @return User
      */
-    public function setName(string $name)
+    public function setName(string $name) : self
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -34,10 +34,14 @@ class User
 
     /**
      * @param int $age
+     *
+     * @return User
      */
-    public function setAge(int $age)
+    public function setAge(int $age) : self
     {
         $this->age = $age;
+
+        return $this;
     }
 
     /**
@@ -54,17 +58,19 @@ class User
  */
 class Worker extends User
 {
-    /**
-     * @var
-     */
+    /** @var */
     private $salary;
 
     /**
      * @param int $salary
+     *
+     * @return Worker
      */
-    public function setSalary(int $salary)
+    public function setSalary(int $salary) : self
     {
         $this->salary = $salary;
+
+        return $this;
     }
 
     /**
@@ -81,21 +87,21 @@ class Worker extends User
  */
 class Driver extends Worker
 {
-    /**
-     * @var
-     */
+    /** @var */
     private $experience;
-    /**
-     * @var
-     */
+    /** @var */
     private $category;
 
     /**
      * @param int $experience
+     *
+     * @return Driver
      */
-    public function setExperience(int $experience)
+    public function setExperience(int $experience) : self
     {
         $this->experience = $experience;
+
+        return $this;
     }
 
     /**
@@ -108,10 +114,14 @@ class Driver extends Worker
 
     /**
      * @param string $category
+     *
+     * @return Driver
      */
-    public function setCategory(string $category)
+    public function setCategory(string $category) : self
     {
         $this->category = $category;
+
+        return $this;
     }
 
     /**
@@ -121,24 +131,8 @@ class Driver extends Worker
     {
         return $this->category;
     }
-
-    /**
-     *
-     */
-    public function showAll()
-    {
-        echo parent::getName() . PHP_EOL;
-        echo parent::getAge() . PHP_EOL;
-        echo parent::getSalary() . PHP_EOL;
-        echo $this->getExperience() . PHP_EOL;
-        echo $this->getCategory() . PHP_EOL;
-    }
 }
 
 $obj1 = new Driver();
-$obj1->setName('Иван');
-$obj1->setAge(25);
-$obj1->setSalary(1000);
-$obj1->setExperience(2);
-$obj1->setCategory('A');
-$obj1->showAll();
+$obj1->setName('Иван')->setAge(25)->setSalary(1000);
+$obj1->setExperience(2)->setCategory('A');

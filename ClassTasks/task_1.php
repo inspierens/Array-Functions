@@ -12,17 +12,11 @@
  */
 class Worker
 {
-    /**
-     * @var
-     */
+    /** @var */
     public $name;
-    /**
-     * @var
-     */
+    /** @var */
     public $age;
-    /**
-     * @var
-     */
+    /** @var */
     public $salary;
 }
 

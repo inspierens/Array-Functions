@@ -8,6 +8,9 @@
  */
 class Form
 {
+    /** @var */
+    private $htmlString = '';
+
     /**
      * @param array $arr
      *
@@ -46,70 +49,113 @@ class Form
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function input(array $arr)
+    public function input(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<input' . $str . '><br>';
+        $this->htmlString .= '<input' . $str . '><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function submit(array $arr)
+    public function submit(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<input type="submit"' . $str . '><br>';
+        $this->htmlString .= '<input type="submit"' . $str . '><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function password(array $arr)
+    public function password(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<input type="password"' . $str . '><br>';
+        $this->htmlString .= '<input type="password"' . $str . '><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function textarea(array $arr)
+    public function textarea(array $arr) : self
     {
         $str = $this->setOtherValue($arr);
-        echo '<textarea' . $str . '</textarea><br>';
+        $this->htmlString .= '<textarea' . $str . '</textarea><br>';
+
+        return $this;
     }
 
     /**
      * @param array $arr
+     *
+     * @return Form
      */
-    public function open(array $arr)
+    public function open(array $arr) : self
     {
         $str = $this->setValue($arr);
-        echo '<form' . $str . '><br>';
+        $this->htmlString .= '<form' . $str . '><br>';
+
+        return $this;
 
     }
 
     /**
-     *
+     * @return Form
      */
-    public function close()
+    public function close() : self
     {
-        echo '</form><br>';
+        $this->htmlString .= '</form><br>';
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHtmlCode() : string
+    {
+        return $this->htmlString;
     }
 }
 
 $form = new Form();
-$form->open(['action' => 'index.php', 'method' => 'POST']);
-$form->input(['type' => 'text', 'value' => '!!!', 'class' => 'hi']);
-$form->password(['value' => '!!!']);
-$form->submit(['value' => 'go']);
-$form->textarea(['placeholder' => '123', 'value' => '!!!']);
-$form->close();
+$form->open(
+    ['action' => 'index.php', 'method' => 'POST']
+)->input(
+    ['type' => 'text', 'value' => '!!!', 'class' => 'hi']
+)->password(
+    ['value' => '!!!']
+)->submit(
+    ['value' => 'go']
+)->textarea(
+    ['placeholder' => '123', 'value' => '!!!']
+)->close();
+
+echo $form->getHtmlCode();
 
 $form2 = new Form();
-$form2->open(['action' => 'index.php', 'method' => 'POST']);
-$form2->input(['type' => 'text', 'placeholder' => 'Ваше имя', 'name' => 'name']);
-$form2->password(['placeholder' => 'Ваш пароль', 'name' => 'pass']);
-$form2->submit(['value' => 'Отправить']);
-$form2->close();
+$form2->open(
+    ['action' => 'index.php', 'method' => 'POST']
+)->input(
+    ['type' => 'text', 'placeholder' => 'Ваше имя', 'name' => 'name']
+)->password(
+    ['placeholder' => 'Ваш пароль', 'name' => 'pass']
+)->submit(
+    ['value' => 'Отправить']
+)->close();
+
+echo $form2->getHtmlCode();

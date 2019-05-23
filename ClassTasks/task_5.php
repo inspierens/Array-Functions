@@ -16,21 +16,21 @@
  */
 class User
 {
-    /**
-     * @var
-     */
+    /** @var */
     protected $name;
-    /**
-     * @var
-     */
+    /** @var */
     protected $age;
 
     /**
      * @param string $name
+     *
+     * @return User
      */
-    public function setName(string $name)
+    public function setName(string $name) : self
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -43,10 +43,14 @@ class User
 
     /**
      * @param int $age
+     *
+     * @return User
      */
-    public function setAge(int $age)
+    public function setAge(int $age) : self
     {
         $this->age = $age;
+
+        return $this;
     }
 
     /**
@@ -63,17 +67,19 @@ class User
  */
 class Worker extends User
 {
-    /**
-     * @var
-     */
+    /** @var */
     private $salary;
 
     /**
      * @param int $salary
+     *
+     * @return Worker
      */
-    public function setSalary(int $salary)
+    public function setSalary(int $salary) : self
     {
         $this->salary = $salary;
+
+        return $this;
     }
 
     /**
@@ -87,12 +93,8 @@ class Worker extends User
 
 $obj1 = new Worker();
 $obj2 = new Worker();
-$obj1->setName('Иван');
-$obj2->setName('Вася');
-$obj1->setAge(25);
-$obj2->setAge(26);
-$obj1->setSalary(1000);
-$obj2->setSalary(2000);
+$obj1->setName('Иван')->setAge(25)->setSalary(1000);
+$obj2->setName('Вася')->setAge(26)->setSalary(2000);
 
 echo $obj1->getSalary() + $obj2->getSalary();
 
@@ -101,21 +103,21 @@ echo $obj1->getSalary() + $obj2->getSalary();
  */
 class Student extends User
 {
-    /**
-     * @var
-     */
+    /** @var */
     private $scholarship;
-    /**
-     * @var
-     */
+    /** @var */
     private $course;
 
     /**
      * @param int $scholarship
+     *
+     * @return Student
      */
-    public function setScholarship(int $scholarship)
+    public function setScholarship(int $scholarship) : self
     {
         $this->scholarship = $scholarship;
+
+        return $this;
     }
 
     /**
@@ -128,10 +130,14 @@ class Student extends User
 
     /**
      * @param int $course
+     *
+     * @return Student
      */
-    public function setCourse(int $course)
+    public function setCourse(int $course) : self
     {
         $this->course = $course;
+
+        return $this;
     }
 
     /**

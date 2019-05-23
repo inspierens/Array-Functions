@@ -8,25 +8,23 @@
  */
 class Worker
 {
-    /**
-     * @var
-     */
+    /** @var */
     private $name;
-    /**
-     * @var
-     */
+    /** @var */
     private $age;
-    /**
-     * @var
-     */
+    /** @var */
     private $salary;
 
     /**
      * @param string $name
+     *
+     * @return Worker
      */
-    public function setName(string $name)
+    public function setName(string $name) : self
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -39,12 +37,16 @@ class Worker
 
     /**
      * @param int $age
+     *
+     * @return Worker
      */
-    public function setAge(int $age)
+    public function setAge(int $age) : self
     {
         if ($this->checkAge($age)) {
             $this->age = $age;
         }
+
+        return $this;
     }
 
     /**
@@ -57,10 +59,14 @@ class Worker
 
     /**
      * @param int $salary
+     *
+     * @return Worker
      */
-    public function setSalary(int $salary)
+    public function setSalary(int $salary) : self
     {
         $this->salary = $salary;
+
+        return $this;
     }
 
     /**
@@ -88,12 +94,8 @@ class Worker
 
 $obj1 = new Worker();
 $obj2 = new Worker();
-$obj1->setName('Иван');
-$obj2->setName('Вася');
-$obj1->setAge(25);
-$obj2->setAge(26);
-$obj1->setSalary(1000);
-$obj2->setSalary(2000);
+$obj1->setName('Иван')->setAge(25)->setSalary(1000);
+$obj2->setName('Вася')->setAge(26)->setSalary(2000);
 
 echo $obj1->getSalary() + $obj2->getSalary() . PHP_EOL;
 echo $obj1->getAge() + $obj2->getAge();

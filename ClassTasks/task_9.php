@@ -10,32 +10,36 @@ class Cookie
     /**
      * @param string $cookieName
      * @param string $cookieValue
+     *
+     * @return Cookie
      */
-    public function setCookie(string $cookieName, string $cookieValue)
+    public function setCookie(string $cookieName, string $cookieValue) : self
     {
         setcookie($cookieName, $cookieValue);
+
+        return $this;
     }
 
     /**
      * @param string $cookieName
+     *
+     * @return string
      */
-    public function getCookie(string $cookieName)
+    public function getCookie(string $cookieName) : string
     {
-        echo $_COOKIE[$cookieName];
+        return $_COOKIE[$cookieName];
     }
 
     /**
      * @param string $cookieName
      */
-    public function delCookie(string $cookieName)
+    public function delCookie(string $cookieName) : void
     {
         setcookie($cookieName, '', time() - 3600);
     }
 }
 
 $myCookie = new Cookie();
-$myCookie->setCookie('someName', 'someValue');
-$myCookie->setCookie('userName', 'Dima');
-$myCookie->setCookie('userPass', 'qwerty');
+$myCookie->setCookie('someName', 'someValue')->setCookie('userName', 'Dima')->setCookie('userPass', 'qwerty');
 $myCookie->getCookie('someName');
 $myCookie->delCookie('someName');
